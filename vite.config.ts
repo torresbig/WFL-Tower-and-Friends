@@ -8,7 +8,7 @@ export default defineConfig({
   // Beispiel: base: '/tower-and-friends/',
   // base: '/DEIN-REPO-NAME/',
 
-  base: '/WFL-Tower-and-Friends/',  // ← Trage hier deinen Repository-Namen ein!
+  base: '/wfl-tower/',  // ← Trage hier deinen Repository-Namen ein!
   plugins: [
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
