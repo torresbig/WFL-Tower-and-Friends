@@ -25,7 +25,7 @@ const facts = [
   {
     icon: Target,
     title: "Jeder Meter zählt",
-    description: "Egal ob 5 km oder 50 km - jeder Laufmeter unterstützt die Forschung",
+    description: "Egal ob 5 km oder 50 km - jeder Laufmeter setzt ein Zeichen",
   },
   {
     icon: TrendingUp,
