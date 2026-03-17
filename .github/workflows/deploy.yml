@@ -20,13 +20,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
-          cache-dependency-path: pnpm-lock.yaml
-          
+
       - name: Install pnpm globally
         run: |
           npm install -g pnpm@8.11.0
           pnpm --version
+          which pnpm
 
       - name: Install dependencies
         run: pnpm install
