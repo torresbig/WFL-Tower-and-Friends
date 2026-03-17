@@ -7,7 +7,7 @@ export default defineConfig({
   // WICHTIG: Für GitHub Pages die base URL anpassen!
   // Beispiel: base: '/tower-and-friends/',
   // base: '/DEIN-REPO-NAME/',
-  export default defineConfig({
+
   base: 'WFL-Tower-and-Friends',  // ← Trage hier deinen Repository-Namen ein!
   plugins: [
     // The React and Tailwind plugins are both required for Make, even if
