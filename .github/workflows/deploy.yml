@@ -19,20 +19,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+          node-version: '24'
 
       - name: Install dependencies
         run: |
-          pnpm --version
-          pnpm install
-        
+          npm --version
+          node --version
+          npm install
+
       - name: Build
-        run: pnpm build
+        run: npm run build
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
