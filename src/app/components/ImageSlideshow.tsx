@@ -4,11 +4,11 @@ import { motion } from "motion/react";
 
 // Platzhalter-Bilder - Diese werden durch die echten Bilder aus dem GitHub Ordner bilder/slide ersetzt
 const SLIDESHOW_IMAGES = [
-  "/bilder/slide/team1.jpg",
-  "/bilder/slide/team2.jpg",
-  "/bilder/slide/team3.jpg",
-  "/bilder/slide/team4.jpg",
-  "/bilder/slide/team5.jpg",
+  "/public/bilder/slide/team1.jpg",
+  "/public/bilder/slide/team2.jpg",
+  "/public/bilder/slide/team3.jpg",
+  "/public/bilder/slide/team4.jpg",
+  "/public/bilder/slide/team5.jpg",
 ];
 
 export function ImageSlideshow() {
