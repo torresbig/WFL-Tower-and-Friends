@@ -1,4 +1,4 @@
-// import teamVideo from '../../../assets/video/team-video.mp4';
+import teamVideo from "../../assets/video/team-video.mp4";
 
 export function VideoSection() {
   return (
@@ -13,8 +13,7 @@ export function VideoSection() {
               controls
               className="w-full h-full"
             >
-              <source src={/* teamVideo */ ''} type="video/mp4" />
-              <source src={/* teamVideo.replace('.mp4', '.webm') */ ''} type="video/webm" />
+              <source src={teamVideo} type="video/mp4" />
               Dein Browser unterstützt das Video-Tag nicht.
             </video>
           </div>
