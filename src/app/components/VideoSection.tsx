@@ -40,7 +40,7 @@ export function VideoSection() {
           <div className="aspect-video bg-black flex items-center justify-center">
             <video
               ref={videoRef}
-              muted // Autoplay erfordert muted
+              controls
               loop
               className="w-full h-full"
             >

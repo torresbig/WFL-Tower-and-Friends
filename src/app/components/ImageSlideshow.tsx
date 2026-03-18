@@ -1,23 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 
-// Platzhalter-Bilder (sollen in src/assets/bilder/slide/ liegen)
-import team1 from "../../assets/bilder/slide/team1.jpg";
-import team2 from "../../assets/bilder/slide/team2.jpg";
-import team3 from "../../assets/bilder/slide/team3.jpg";
-import team4 from "../../assets/bilder/slide/team4.jpg";
-import team5 from "../../assets/bilder/slide/team5.jpg";
-
-const SLIDESHOW_IMAGES = [
-  // team1, // Platzhalter - entfernt
-  // team2, // Platzhalter - entfernt
-  team3,
-  team4,
-  team5,
-];
+function shuffleArray<T>(array: T[]) {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
 
 export function ImageSlideshow() {
+  const [slides, setSlides] = useState<string[]>([]);
   const sliderRef = useRef<Slider>(null);
+
+  useEffect(() => {
+    // Dynamisch alle Bilder aus dem Ordner /src/assets/bilder/slide/ laden
+    const modules = import.meta.glob("../../assets/bilder/slide/*.{jpg,jpeg,png,webp}", {
+      eager: true,
+      import: "default",
+    }) as Record<string, string>;
+
+    const loaded = Object.values(modules);
+    if (loaded.length > 0) {
+      setSlides(shuffleArray(loaded));
+    }
+  }, []);
 
   const settings = {
     dots: true,
@@ -40,26 +48,35 @@ export function ImageSlideshow() {
         </h2>
         <div className="slideshow-container shadow-2xl rounded-lg overflow-hidden">
           <Slider ref={sliderRef} {...settings}>
-            {SLIDESHOW_IMAGES.map((image, index) => (
-              <div key={index} className="relative">
+            {slides.length === 0 ? (
+              <div className="relative">
                 <div className="aspect-video bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center">
-                  <img
-                    src={image}
-                    alt={`Team Bild ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback wenn Bild nicht existiert
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-gray-400 text-2xl">Bild ${index + 1}</div>`;
-                      }
-                    }}
-                  />
+                  <p className="text-gray-500 text-lg">Lade Bilder…</p>
                 </div>
               </div>
-            ))}
+            ) : (
+              slides.map((image, index) => (
+                <div key={index} className="relative">
+                  <div className="aspect-video bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center">
+                    <img
+                      src={image}
+                      alt={`Team Bild ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = "none";
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-gray-400 text-2xl">Bild ${
+                            index + 1
+                          }</div>`;
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              ))
+            )}
           </Slider>
         </div>
         <p className="text-center mt-6 text-gray-600 italic">
