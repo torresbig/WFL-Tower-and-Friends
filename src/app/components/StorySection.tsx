@@ -25,7 +25,7 @@ export function StorySection() {
 
             <div className="bg-[#E2004C]/10 border-l-4 border-[#E2004C] p-6 my-8">
               <p className="text-lg font-semibold text-gray-900">
-                2025: 55 aktive Läufer · Über 2.000 € Spenden · 100% für die Forschung
+                2025: 55 aktive Läufer · Über 3.000 € Spenden · 100% für die Forschung
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export function StorySection() {
           </div>
           
           <p className="text-lg leading-relaxed text-gray-700 mb-6">
-            Dieses Jahr wird's besonders cool: Nach dem Lauf treffen wir uns am <strong className="text-[#E2004C]">Simmersee</strong> 
+            Dieses Jahr wird's besonders cool: Nach dem Lauf treffen wir uns am <strong className="text-[#E2004C]">Simmersee </strong> 
             zum gemeinsamen Grillen, Feiern und Genießen!
           </p>
 
