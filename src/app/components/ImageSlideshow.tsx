@@ -79,9 +79,7 @@ export function ImageSlideshow() {
             )}
           </Slider>
         </div>
-        <p className="text-center mt-6 text-gray-600 italic">
-          Bilder aus deinem GitHub Ordner: /bilder/slide/
-        </p>
+        
       </div>
 
       <style>{`
