@@ -29,7 +29,7 @@ export function Hero() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-4">Tower & Friends</h1>
-        <p className="text-xl md:text-2xl opacity-90">Gemeinsam laufen für die Heilung von Querschnittlähmung</p>
+        <p className="text-xl md:text-2xl opacity-90">Gemeinsam nehmen wir am "Wings for life World Run" teil und laufen für die Heilung von Querschnittlähmung</p>
       </div>
 
       {/* Datum Banner ganz oben - entfernt */}
