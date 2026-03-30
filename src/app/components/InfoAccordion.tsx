@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Heart, Globe, Clock, Smartphone, Target, TrendingUp } from "lucide-react";
 
 export function InfoAccordion() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ export function InfoAccordion() {
           onClick={() => setIsOpen(!isOpen)}
           className="w-full text-left text-2xl md:text-3xl font-bold text-red-600 hover:text-red-800 transition-colors duration-200 flex items-center justify-between p-4 bg-white rounded-lg shadow-md border border-red-200"
         >
-          Klick für mehr Infos zum World Run
+         <Target /> Klick für mehr Infos zum World Run
           <span className={`transform transition-transform duration-200 text-3xl ${isOpen ? 'rotate-180' : ''}`}>
             ▼
           </span>
