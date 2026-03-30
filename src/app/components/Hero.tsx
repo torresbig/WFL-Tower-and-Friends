@@ -49,7 +49,7 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-8">
-        <div className="animate-bounce">
+        <div className="animate-bounce flex space-x-2">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
