@@ -85,11 +85,11 @@ export function StorySection() {
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <div className="flex items-center mb-6">
             <PartyPopper className="w-10 h-10 mr-4 text-[#E2004C]" />
-            <h3 className="text-3xl font-bold text-[#003056]">After-Run Celebration 2025</h3>
+            <h3 className="text-3xl font-bold text-[#003056]">After-Run Celebration 2026</h3>
           </div>
           
           <p className="text-lg leading-relaxed text-gray-700 mb-6">
-            Dieses Jahr wird's besonders cool: Nach dem Lauf treffen wir uns am <strong className="text-[#E2004C]">Simmersee </strong> 
+            Wie jedes Jahr wird's besonders cool: Nach dem Lauf treffen wir uns am <strong className="text-[#E2004C]">Simmersee </strong> 
             zum gemeinsamen Grillen, Feiern und Genießen!
           </p>
 
