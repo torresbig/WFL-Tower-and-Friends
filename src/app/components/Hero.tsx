@@ -51,7 +51,8 @@ export function Hero() {
       <div className="absolute bottom-8">
         <div className="animate-bounce flex space-x-2">
         <a>weiter scrollen</a>
-
+        </div>
+        <div className="animate-bounce flex space-x-2">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
