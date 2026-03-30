@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import teamVideo from "../../assets/video/team-video.mp4";
+import whatisVideo from "../../assets/video/whatis.mp4";
+import missionVideo from "../../assets/video/mission.mp4";
 
 export function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -34,7 +36,7 @@ export function VideoSection() {
     <section className="py-20 px-4 bg-red-600">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
-          Erlebe die Atmosphäre
+          Was ist der Wings for Life World Run?
         </h2>
         <div className="relative rounded-xl overflow-hidden shadow-2xl">
           <div className="aspect-video bg-black flex items-center justify-center">
@@ -44,14 +46,29 @@ export function VideoSection() {
               loop
               className="w-full h-full"
             >
-              <source src={teamVideo} type="video/mp4" />
+              <source src={whatisVideo} type="video/mp4" />
               Dein Browser unterstützt das Video-Tag nicht.
             </video>
           </div>
         </div>
-        <p className="text-center mt-6 text-white/80 italic">
-          Video aus deinem GitHub Ordner: /video/
-        </p>
+      </div>
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
+          Die Mission von Wings for Life
+        </h2>
+        <div className="relative rounded-xl overflow-hidden shadow-2xl">
+          <div className="aspect-video bg-black flex items-center justify-center">
+            <video
+              ref={videoRef}
+              controls
+              loop
+              className="w-full h-full"
+            >
+              <source src={missionVideo} type="video/mp4" />
+              Dein Browser unterstützt das Video-Tag nicht.
+            </video>
+          </div>
+        </div>
       </div>
     </section>
   );
