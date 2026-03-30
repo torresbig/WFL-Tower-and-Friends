@@ -1,7 +1,5 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import whatisVideo from "../../assets/video/whatis.mp4";
-import missionVideo from "../../assets/video/mission.mp4";
 
 export function VideoSection() {
   const whatisVideoRef = useRef<HTMLVideoElement>(null);
@@ -55,7 +53,7 @@ export function VideoSection() {
                 loop
                 className="w-full h-full"
               >
-                <source src={whatisVideo} type="video/mp4" />
+                <source src="/assets/video/whatis.mp4" type="video/mp4" />
                 Dein Browser unterstützt das Video-Tag nicht.
               </video>
             </div>
@@ -87,7 +85,7 @@ export function VideoSection() {
                 loop
                 className="w-full h-full"
               >
-                <source src={missionVideo} type="video/mp4" />
+                <source src="/assets/video/mission.mp4" type="video/mp4" />
                 Dein Browser unterstützt das Video-Tag nicht.
               </video>
             </div>
