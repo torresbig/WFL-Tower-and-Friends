@@ -3,6 +3,7 @@ import { ImageSlideshow } from "./components/ImageSlideshow";
 import { FactsSection } from "./components/FactsSection";
 import { CTASection } from "./components/CTASection";
 import { VideoSection } from "./components/VideoSection";
+import { InfoAccordion } from "./components/InfoAccordion"; // Neu hinzugefügt
 import { StorySection } from "./components/StorySection";
 import { Footer } from "./components/Footer";
 
@@ -14,6 +15,9 @@ export default function App() {
 
       {/* Video Section */}
       <VideoSection variant="whatis"/>
+
+      {/* Einklappbare Infos */}
+      <InfoAccordion />
 
       {/* Thomas' Geschichte direkt unter der Slideshow */}
       <StorySection />
