@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import teamVideo from "../../assets/video/team-video.mp4";
 import whatisVideo from "../../assets/video/whatis.mp4";
 import missionVideo from "../../assets/video/mission.mp4";
+
 
 export function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
