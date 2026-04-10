@@ -1,47 +1,96 @@
-import { Heart, Globe, Clock, Smartphone, Target, TrendingUp, DollarSign } from "lucide-react";
+import { Heart, Globe, Clock, Smartphone, Target, TrendingUp, DollarSign, Instagram } from "lucide-react";
 
-const facts = [
+type Fact = {
+  icon: typeof Heart;
+  title: string;
+  content: string;
+  email?: string;
+  instagramText?: string;
+  instagramLink?: string;
+  instagramLabel?: string;
+};
+
+const facts: Fact[] = [
   {
     icon: Heart,
     title: "100% für die Forschung",
-    description: "Jeder gespendete Euro fließt direkt in die Forschung zur Heilung von Querschnittlähmung",
+    content: "Jeder gespendete Euro fließt direkt in die Forschung zur Heilung von Querschnittlähmung",
   },
   {
     icon: Globe,
     title: "Weltweites Event",
-    description: "Der Lauf findet weltweit zur gleichen Zeit statt - in Deutschland um 13:00 Uhr",
+    content: "Der Lauf findet weltweit zur gleichen Zeit statt - in Deutschland um 13:00 Uhr",
   },
   {
     icon: Clock,
     title: "Das Catcher Car",
-    description: "Startet 30 Minuten nach dir und wird immer schneller - es holt jeden ein!",
+    content: "Startet 30 Minuten nach dir und wird immer schneller - es holt jeden ein!",
   },
   {
     icon: Smartphone,
     title: "App erforderlich",
-    description: "Die offizielle App trackt deinen Lauf und kommentiert live - ohne App keine Teilnahme",
+    content: "Die offizielle App trackt deinen Lauf und kommentiert live - ohne App keine Teilnahme",
   },
   {
     icon: Target,
     title: "Jeder Meter zählt",
-    description: "Egal ob 5 km oder 50 km - jeder Laufmeter setzt ein Zeichen",
+    content: "Egal ob 5 km oder 50 km - jeder Laufmeter setzt ein Zeichen",
   },
   {
     icon: TrendingUp,
     title: "Unser Impact 2025",
-    description: "55 aktive Läufer (über 100 Mitglieder) und über 3.000 € Spenden - gemeinsam sind wir stark!",
+    content: "55 aktive Läufer (über 100 Mitglieder) und über 3.000 € Spenden - gemeinsam sind wir stark!",
   },
   {
     icon: DollarSign,
     title: "Spenden statt Laufen?",
-    description: "Du kannst nicht laufen? Kein Problem! Unterstütze uns finanziell. Kontaktiere uns per Email: wfl_tower@t-online.de oder auf Instagram @thomas_sborn",
+    content: "Du kannst nicht laufen? Kein Problem! Unterstütze uns finanziell.",
+    email: "wfl_tower@t-online.de",
+    instagramText: " oder auf Instagram an ",
+    instagramLink: "https://www.instagram.com/thomas_sborn/",
+    instagramLabel: "@thomas_sborn",
   },
   {
     icon: Target,
     title: "privates Event",
-    description: "Jeder Teilnehmer nimmt auf eigene Gefahr am \" Wings for Life World Run\" teil. Unser Team trifft sich nur, um privat zusammen zu laufen und Spaß zu haben. Dies ist kein offizielles Event!",
+    content: "Jeder Teilnehmer nimmt auf eigene Gefahr am \" Wings for Life World Run\" teil. Unser Team trifft sich nur, um privat zusammen zu laufen und Spaß zu haben. Dies ist kein offizielles Event!",
   },
 ];
+
+const renderFactContent = (fact: Fact) => {
+  if (fact.email || fact.instagramLink) {
+    return (
+      <>
+        {fact.content}{" "}
+        {fact.email && (
+          <a
+            href={`mailto:${fact.email}`}
+            className="font-semibold text-[#E2004C] hover:text-[#C20041] underline transition-colors"
+          >
+            {fact.email}
+          </a>
+        )}
+        {fact.instagramLink && (
+          <>
+            {fact.instagramText}
+            <a
+              href={fact.instagramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-semibold text-[#E2004C] hover:text-[#C20041] underline transition-colors"
+            >
+              <Instagram className="w-4 h-4" />
+              {fact.instagramLabel}
+            </a>
+          </>
+        )}
+      </>
+    );
+  }
+
+  return fact.content;
+};
+
 
 export function FactsSection() {
   return (
@@ -66,7 +115,9 @@ export function FactsSection() {
                 </div>
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#003056]">{fact.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{fact.description}</p>
+              <p className="text-gray-600 leading-relaxed">
+                {renderFactContent(fact)}
+              </p>
             </div>
           ))}
         </div>
