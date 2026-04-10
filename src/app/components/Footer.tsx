@@ -1,4 +1,5 @@
 import { Heart, Instagram } from "lucide-react";
+import { VisitorCounter } from "./VisitorCounter";
 
 export function Footer() {
   return (
@@ -48,7 +49,8 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="mt-8 text-sm text-gray-400">
+        <div className="mt-8 text-sm text-gray-400 space-y-2">
+          <VisitorCounter />
           <p>&copy; {new Date().getFullYear()} Tower & Friends · Wings for Life World Run</p>
         </div>
       </div>
