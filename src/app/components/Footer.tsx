@@ -1,6 +1,17 @@
 import { Heart, Instagram } from "lucide-react";
+import { useEffect } from "react";
 
 export function Footer() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.yogizaehler.de/Besucherzaehler/pz_018_2.php?id=1988926568&design=886000003";
+    script.async = true;
+    const container = document.getElementById("YFB_");
+    if (container) {
+      container.appendChild(script);
+    }
+  }, []);
+
   return (
     <footer className="bg-[#003056] text-white py-12 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -49,7 +60,8 @@ export function Footer() {
         </div>
 
         <div className="mt-8 text-sm text-gray-400">
-          <div id="YFB_"><script type="text/javascript" async src="https://www.yogizaehler.de/Besucherzaehler/z_003.php?id=1988926568"></script></div><noscript><img src="https://www.yogizaehler.de/Besucherzaehler/z_000.php?id=1988926568" alt=""></noscript>
+          <div id="YFB_" className="mb-4"></div>
+          <p>&copy; {new Date().getFullYear()} Tower & Friends · Wings for Life World Run</p>
         </div>
       </div>
     </footer>
