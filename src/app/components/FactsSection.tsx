@@ -38,8 +38,13 @@ const facts: Fact[] = [
   },
   {
     icon: TrendingUp,
-    title: "Unser Impact 2025",
-    content: "55 aktive Läufer (über 100 Mitglieder) und über 3.000 € Spenden - gemeinsam sind wir stark!",
+    title: "Unser Team Impact 2025",
+    content: "Team Tower & Friends hatte 2025 unglaubliche 55 aktive Läufer (über 100 Mitglieder) und über 3.000 € Spenden gesammelt!",
+  },
+  {
+    icon: TrendingUp,
+    title: "weltweiter Impact 2025",
+    content: "310.719 Teilnehmer weltweit sammelten insgesamt 8,6 Millionen Euro für die Rückenmarksforschung!",
   },
   {
     icon: DollarSign,
