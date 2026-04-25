@@ -40,6 +40,11 @@ const rotatingMessages = [
     instagramLink: "https://www.instagram.com/thomas_sborn/",
     instagramLabel: "@thomas_sborn",
   },
+  {
+    id: 9,
+    content: "der gemeinsame Lauf in Simmern ist ein privates Event, bei dem jeder auf eigene Verantwortung am World Run teilnimmt",
+    
+  },
 ];
 
 export function Hero() {
