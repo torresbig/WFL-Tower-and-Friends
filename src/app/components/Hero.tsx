@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Instagram } from "lucide-react";
 
 const rotatingMessages = [
@@ -40,29 +40,68 @@ const rotatingMessages = [
     instagramLink: "https://www.instagram.com/thomas_sborn/",
     instagramLabel: "@thomas_sborn",
   },
+  {
+    id: 9,
+    content: "der gemeinsame Lauf in Simmern ist ein privates Event, bei dem jeder auf eigene Verantwortung am World Run teilnimmt",
+  },
 ];
+
+// Hilfsfunktion zum Mischen der Reihenfolge (Fisher-Yates Shuffle)
+const shuffleArray = (array: number[]) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 export function Hero() {
   const [daysUntilStart, setDaysUntilStart] = useState(0);
-  const [activeTextIndex, setActiveTextIndex] = useState(0);
+  
+  // Wir speichern die aktuelle Reihenfolge der Indizes
+  const [order, setOrder] = useState<number[]>([]);
+  // Und an welcher Stelle in dieser Reihenfolge wir gerade sind
+  const [currentIndexInOrder, setCurrentIndexInOrder] = useState(0);
 
+  // Initialisierung: Tage berechnen und erste zufällige Reihenfolge festlegen
   useEffect(() => {
     const targetDate = new Date("2026-05-10");
     const today = new Date();
     const diffTime = targetDate.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     setDaysUntilStart(diffDays);
+
+    // Erstellt ein Array [0, 1, 2, ... 8] und mischt es
+    const initialIndices = Array.from(rotatingMessages.keys());
+    setOrder(shuffleArray(initialIndices));
   }, []);
 
+  // Intervall-Logik
   useEffect(() => {
+    if (order.length === 0) return;
+
     const interval = setInterval(() => {
-      setActiveTextIndex((current: number) => (current + 1) % rotatingMessages.length);
+      setCurrentIndexInOrder((prevIndex) => {
+        const nextIndex = prevIndex + 1;
+        
+        // Wenn wir am Ende der Liste angekommen sind:
+        if (nextIndex >= order.length) {
+          // Neue zufällige Reihenfolge generieren
+          setOrder(shuffleArray(Array.from(rotatingMessages.keys())));
+          return 0; // Wieder vorne anfangen
+        }
+        return nextIndex;
+      });
     }, 4500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [order]);
 
-  const activeMessage = rotatingMessages[activeTextIndex];
+  // Die aktuell anzuzeigende Nachricht basierend auf der gemischten Reihenfolge
+  const activeMessage = order.length > 0 
+    ? rotatingMessages[order[currentIndexInOrder]] 
+    : rotatingMessages[0];
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-b from-[#003056] to-[#002040] text-white px-4 pt-16 pb-12">
@@ -84,14 +123,14 @@ export function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Tower & Friends</h1>
 
           <div className="mx-auto mb-8 max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm transition-all duration-700">
-            <p className="text-base sm:text-lg md:text-xl leading-8 text-white/90">
+            <p className="text-base sm:text-lg md:text-xl leading-8 text-white/90 min-h-[100px] flex flex-wrap justify-center items-center">
               {activeMessage.email || activeMessage.instagramLink ? (
                 <>
                   {activeMessage.content}
                   {activeMessage.email && (
                     <a
                       href={`mailto:${activeMessage.email}`}
-                      className="font-semibold text-white underline transition-colors duration-200 hover:text-[#E2004C]"
+                      className="font-semibold text-white underline transition-colors duration-200 hover:text-[#E2004C] ml-1"
                     >
                       {activeMessage.email}
                     </a>
@@ -103,7 +142,7 @@ export function Hero() {
                         href={activeMessage.instagramLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 font-semibold text-white underline transition-colors duration-200 hover:text-[#E2004C]"
+                        className="inline-flex items-center gap-2 font-semibold text-white underline transition-colors duration-200 hover:text-[#E2004C] ml-1"
                       >
                         <Instagram className="h-5 w-5" />
                         {activeMessage.instagramLabel}
@@ -117,7 +156,7 @@ export function Hero() {
                     href={activeMessage.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-semibold text-white underline transition-colors duration-200 hover:text-[#E2004C]"
+                    className="inline-flex items-center gap-2 font-semibold text-white underline transition-colors duration-200 hover:text-[#E2004C] ml-1"
                   >
                     <Instagram className="h-5 w-5" />
                     {activeMessage.label}
