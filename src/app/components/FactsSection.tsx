@@ -50,7 +50,7 @@ const facts: Fact[] = [
     icon: DollarSign,
     title: "Spenden statt Laufen?",
     content: "Du kannst nicht laufen? Kein Problem! Unterstütze uns finanziell.",
-    email: "wfl_tower@t-online.e",
+    email: "wfl_tower@t-online.de",
     instagramText: " oder auf Instagram an ",
     instagramLink: "https://www.instagram.com/thomas_sborn/",
     instagramLabel: "@thomas_sborn",
